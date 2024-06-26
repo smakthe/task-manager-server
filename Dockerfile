@@ -20,4 +20,4 @@ RUN bundle install
 EXPOSE 3001
 
 # Start the Rails server
-CMD ["rails", "server"]
+CMD ["bundle", "exec", "rails", "server"]
