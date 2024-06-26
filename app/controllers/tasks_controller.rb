@@ -2,8 +2,18 @@ class TasksController < ApplicationController
     before_action :set_task, only: [:show, :update, :destroy]
   
     def index
+      @tasks_latest = Task.latest
+      render json: @tasks_latest
+    end
+
+    def all
       @tasks = Task.all
-      render json: @tasks
+      render json: @task
+    end
+
+    def finished
+      @tasks_finished = Task.finished
+      render json: @tasks_finished
     end
   
     def show
@@ -41,5 +51,6 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:title, :description, :status)
     end
+
   end
   
