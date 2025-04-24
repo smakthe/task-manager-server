@@ -7,7 +7,10 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://task-manager-steel-psi.vercel.app/'
+    # Use a default value if FRONTEND_URL isn't set
+    # or split multiple URLs if comma-separated values are provided
+    origins ENV.fetch("FRONTEND_URL", "http://localhost:3000").split(',').map(&:strip)
+    
     resource "*",
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]

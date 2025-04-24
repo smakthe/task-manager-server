@@ -44,6 +44,6 @@ group :production do
   # Add the gems you need on production here
 end
 
-
+gem "dotenv-rails"
 gem "rspec-rails"
 gem 'rack-cors'
